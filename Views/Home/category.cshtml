@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using cartoon.Models;
+<html>
+<head>
+    <title>
+
+    </title>
+    <style>
+        .list-group-item:hover {
+            font-size: 20px;
+        }
+
+        .list-group {
+            padding-left: 5%;
+        }
+
+        .video {
+            padding-top: 10%;
+            width: 70%;
+            padding-left: 20%;
+        }
+
+        .video1 {
+            padding-top: 10%;
+            width: 70%;
+            padding-left: 20%;
+        }
+
+        .videodiv {
+            width: 66%;
+        }
+    </style>
+</head>
+<body>
+    <div class="row" style="padding-top:0.1%">
+        <div class="col-md-8">
+            <div class="col-md-4">
+                <div class="list-group">
+                    <h2 href="#" style="font-size:20px;" class="list-group-item active">Categories</h2>
+                    @foreach (Table t in ViewBag.category)
+                    {
+                        <a href="@("/Home/category/?name=" + @t.name)" class="list-group-item">@t.name</a>
+
+                    }
+                </div>
+
+            </div>
+            <div class="col-md-4 videodiv">
+                <h2 class="active list-group-item" style="background-color:#337ab7;font-size:20px; height:47px;color:white; padding-left:10px;border-radius:4px;border: 1px solid #ccc ">@ViewBag.categoryname</h2>
+               @foreach(content c in ViewBag.videos)
+               { 
+                 <div class="video1 embed-responsive embed-responsive-16by9" align="center">
+                    <video controls class="embed-responsive-item">
+                        <source src="@("/Images/video/"+c.name) "/>
+                    </video>
+
+
+                </div>
+                <h3><a href="@("/Home/video/?name="+c.name) style=" padding-top:5%">@c.name</a></h3>
+               }
+                   </div>
+        </div>
+        <div class="col-md-4">
+            <h2 class="active list-group-item" style="background-color:#337ab7;font-size:20px; height:47px;color:white; padding-left:10px;border-radius:4px;border: 1px solid #ccc ">Pictures </h2>
+            @foreach(content cont in ViewBag.pictures)
+            {
+                <div class="row" style="padding-top:10%">
+
+                    <div class="col-md-6 ">
+                        <img class="image-responsive" src="@("/Images/picture/"+cont.name)" style="height:90%;width:90%;border-style:solid;border-color:black" />
+                        <h3><a href="@("/Home/picture/?name="+cont.name) style="padding-left:70px">@cont.name</a></h3>
+                    </div>
+                   
+
+
+                </div>
+            }
+        </div>
+
+    </div>
+
+</body>
+</html>

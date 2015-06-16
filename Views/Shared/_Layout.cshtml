@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+
+    <script type="text/javascript">
+    function abc()
+    {
+        $("#search").change(function(){(@ViewBag.search=$"#search").value;
+            $("#new").load("/Home/search");})
+    }
+    function func()
+    {
+        @ViewBag.search=document.getElementById("search").value;
+        $("#new").load("/Home/search");
+
+    }
+        $("input[data-autocomplete-source]").each(function(){
+            var target=$(this);
+            target.autocomplete({source: target.attr("data-autocomplete-source")});
+        });
+    </script>
+    <title>@ViewBag.Title
+    </title>
+   
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" href="~/Images/mainlogo.png" type="image/png" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <style>
+            .list-group-item:hover {
+            font-size: 20px;
+        }
+
+        .list-group {
+            padding-left: 5%;
+        }
+
+       
+
+        .video1 {
+            padding-top: 10%;
+            width: 70%;
+            padding-left: 20%;
+        }
+
+        .videodiv {
+            width: 66%;
+        }
+        .navbar-nav:hover
+        {
+            font-size:14px;
+        }
+        .navbar-nav
+        {
+           
+        }
+        ul#menu li a{
+            color:black;
+        }
+        ul#menu li a:hover{
+            font-size:14px;
+        }
+        h2
+        {
+color:black
+        }
+        h3
+        {
+color:black
+        }
+        footer 
+        {
+            
+            color: black;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+            border-radius:4px;
+        }
+        .searchbar
+{
+padding-top:5%;
+padding-right:5%;
+}
+.logo
+{
+width:60%;
+}
+/* Footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+#footer {
+    background-color:#337ab7;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 280px;
+  background: 
+  /* color overlay */ 
+    linear-gradient(
+      rgba(240, 212, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* image to overlay */
+}
+
+
+/* Custom footer CSS
+-------------------------------------------------- */
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+.footertext {
+  color: #ffffff;
+}
+
+    </style>
+</head>
+<body>
+<script>
+   
+</script>
+    <div style="background-color:#337ab7;  padding-left:10px;border-radius:4px;border: 1px solid #ccc">
+        <nav  class="navbar navbar-default" role="navigation" style="background-color:#337ab7;border:none;color:black" >
+
+            @if (Session["aid"] != null)
+            {
+<ul class="navbar-nav nav pull-right" id="menu">
+    <li><a> @Html.ActionLink(Session["name"].ToString(), "Index", "Admin", routeValues: null, htmlAttributes: new { id = "register" })</a></li>
+    <li><a>@Html.ActionLink("Log out", "logout", "Account", routeValues: null, htmlAttributes: new { id = "login" })</a></li>
+
+</ul>
+            }
+
+                else if (Session["uid"]==null && Session["aid"]==null)
+            {
+                <ul class="navbar-nav nav pull-right" id="menu">
+                    <li><a> @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "register" })</a></li>
+                    <li><a>@Html.ActionLink("Log In", "login", "Account", routeValues: null, htmlAttributes: new { id = "login" })</a></li>
+                    
+                </ul>
+            }
+            else if (Session["uid"]!=null)
+            {
+                <ul class="navbar-nav nav pull-right" id="menu">
+                    <li><a> @Html.ActionLink(Session["name"].ToString(), "Index", "userview", routeValues: null, htmlAttributes: new { id = "register" })</a></li>
+                    <li><a>@Html.ActionLink("Log out", "logout", "Account", routeValues: null, htmlAttributes: new { id = "login" })</a></li>
+
+                </ul>
+            }
+           
+
+          
+              
+            
+
+            <div class="main_menu ">
+                <a href="/Home/index" style="width:60%"> <img src="~/Images/logo.jpg" /></a>
+                <form id="searchbar" style="padding-top:3%" class="pull-right" action="/Home/search">
+                    <input id="search" data-autocomplete-source="@Url.Action("quicksearch","Home")" name="search" onchange="abc()" type="text" style="border-radius:4px;border: 1px solid #ccc;font-size: 14px;height:34px" />
+                    <input type="submit"  value="Search" onclick="func()" id="rsearch" style="height:34px;font-size:16px;border-radius:4px;border: 1px solid #ccc; font-weight:bold" >
+                </form>
+            </div>
+
+
+
+            
+        </nav>
+        
+    </div>
+    <div id="new">
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+        @RenderBody()
+
+    </div>
+    <footer  style="padding-top:20%">
+        
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <h3 class="footertext">About Us:</h3>
+                    <br>
+                    <div class="col-md-4">
+                        <center>
+                            <img src="~/Images/videologo.png" class="img-circle" alt="the-brains">
+                            <br>
+                            <h4 class="footertext">Videos</h4>
+                            <p class="footertext">You can view all the videos of cartoons.<br>
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            <img src="~/Images/image logo.png" class="img-circle" alt="...">
+                            <br>
+                            <h4 class="footertext">Pictures</h4>
+                            <p class="footertext">All the images here are related to cartoons.<br>
+                        </center>
+                    </div>
+                    <div class="col-md-4">
+                        <center>
+                            <img src="~/Images/designlogo.jpg" class="img-circle" alt="...">
+                            <br>
+                            <h4 class="footertext">Channels</h4>
+                            <p class="footertext">You can add your own channels.<br>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <p><center><p>Copyright 2015 - Designed by Waleed Ali Anjum</p> </center></p>
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+@model cartoon.Models.user
+<style>#sheet
+        {
+            margin-top:1%;
+            margin-bottom:3%;
+            margin-left: 10%;
+            margin-right: 10%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+}</style>
+
+<div id="sheet" class="form-group" style="padding-left:30%;">
+    <h2>Register</h2>
+    <div class="container overlay">
+        <div class="row">
+            <form class="form-horizontal" method="post" action="/Account/registering">
+                <fieldset>
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(x=>x.name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.name)
+                        @Html.ValidationMessageFor(model => model.name)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.username)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.username)
+                        @Html.ValidationMessageFor(model => model.username)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.password)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.password)
+                        @Html.ValidationMessageFor(model => model.password)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.email)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.email)
+                        @Html.ValidationMessageFor(model => model.email)
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Create" />
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

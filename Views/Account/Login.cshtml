@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+@model cartoon.Models.user
+<style>
+    #sheet {
+        margin-top: 1%;
+        margin-bottom: 3%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+<script>
+    function func() {
+        var nam = document.getElementById("name").value;
+        var pass = document.getElementById("password").value;
+
+        
+
+        if (nam == "" || pass == "" ) {
+            document.getElementById("error").innerHTML = "Fill all the fields";
+            return false;
+
+        }
+        return true;
+
+    }
+</script>
+
+    <div id="sheet" class="form-group" style="padding-left:30%">
+        <div>
+
+            <h2>Sign In</h2>
+            @using (Html.BeginForm("logging", "Account", FormMethod.Post))
+            {
+                <h4>Name: </h4><input type="text" id="name" name="name" class="form-control " style="width:40%" required />
+                <h4>Password: </h4><input type="password" id="password" name="password" class="form-control" style="width:40%" required />
+
+                <h4> Not a user?</h4><a style="color:orange;margin-left:12%;" href="/Account/Register">Register here</a>
+
+
+                <br />
+                <br />
+                <br />
+                <button id="submit" style="margin-left:11%;" class="btn btn-default" onclick="return func()">Sing In</button>
+                if (TempData["errorinlogin"] != null)
+                {
+                    <p id="error" style="color:red">Invalid username or password</p>
+                }
+            }
+
+        </div>
+    </div>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "channel";
+}
+
+@{
+    ViewBag.Title = "Add channel";
+}
+
+
+@using cartoon.Models;
+<style>
+    #sheet {
+        margin-top: 1%;
+        margin-bottom: 3%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<div id="sheet" class="form-group" style="padding-left:30%;">
+    <h2>Channel</h2>
+    <div class="container overlay">
+        <div class="row">
+            <form class="form-horizontal" method="post" action="/Admin/addingchannel" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="col-md-8 ">
+                        <div class="col-md-4 list-group">
+                            <h2 href="#" style="font-size:20px;" class="list-group-item active">Channels</h2>
+
+                            @foreach (channel c in Model)
+                            {
+                                <a href="/Admin/showchannel/?name=@c.name" class="list-group-item">@c.name</a>
+
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+

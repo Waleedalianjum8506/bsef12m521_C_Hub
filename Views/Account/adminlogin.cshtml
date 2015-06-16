@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+@model cartoon.Models.user
+<style>
+    #sheet {
+        margin-top: 1%;
+        margin-bottom: 3%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+<script>
+    function func() {
+        var nam = document.getElementById("name").value;
+        var pass = document.getElementById("password").value;
+
+
+
+        if (nam == "" || pass == "") {
+            document.getElementById("error").innerHTML = "Fill all the fields";
+            return false;
+
+        }
+        return true;
+
+    }
+</script>
+
+<div id="sheet" class="form-group" style="padding-left:30%">
+    <div>
+        <h2>Sign In</h2>
+        @using (Html.BeginForm("admlogging","Account",FormMethod.Post))
+        {   <ul>
+                <li>
+                    @Html.LabelFor(x => x.name, new { @class = "form-group" })
+                    @Html.TextBoxFor(x => x.name, new { @class = "form-control", id = "name", name = "name" })
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.password)
+                    @Html.TextBoxFor(x => x.password, new { @class = "form-control", id = "password", name = "name" })
+                    
+                </li>
+        <li><p id="error" style="color:red"></p></li>
+                <li>
+                    Not a user?
+                    <a style="color:orange;margin-left:12%;" href="/Account/Register">Register here</a>
+                </li>
+            </ul>
+            <br />
+            <br />
+            <h5 style="color:orange;"><input style="margin-left:11%;" type="checkbox" id="check" /> &nbsp; &nbsp;Remember me</h5>
+            <br />
+            <button id="submit" style="margin-left:11%;" class="btn btn-default" onclick="return func()">Sing In</button>
+        }
+    </div>
+</div>

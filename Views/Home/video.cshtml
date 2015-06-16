@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = @ViewBag.videoname;
+}
+@using cartoon.Models;
+<html>
+<head>
+    <title>
+
+    </title>
+    <style>
+        .list-group-item:hover {
+            font-size: 20px;
+        }
+
+        .list-group {
+            padding-left: 5%;
+        }
+
+       
+        .video1 {
+           width:80%;
+           height:80%;
+            padding-left: 20%;
+        }
+
+        .videodiv {
+            width: 66%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row" style="padding-top:0.1%">
+        
+            <div class="col-md-4">
+                <div class="list-group">
+                    <h2 href="#" style="font-size:20px;" class="list-group-item active">Categories</h2>
+                    @foreach (Table t in ViewBag.category)
+                    {
+                        <a href="@("/Home/category/?name=" + @t.name)" class="list-group-item">@t.name</a>
+
+                    }
+
+                
+
+                
+                    </div>
+
+            </div>
+        <div class="col-md-8">
+            <div class="video1 embed-responsive embed-responsive-16by9" align="center">
+                <video controls class="embed-responsive-item">
+                    <source src="@("/Images/video/"+@ViewBag.videoname)" preload="auto" />
+                </video>
+
+
+            </div>
+            <div class="form-group">
+                <h1>Description</h1>
+                <div class="form-control">
+                    @ViewBag.desc
+                    </div>
+                    <h1>Comments</h1>
+                <ul>
+                    @foreach (comment com in ViewBag.comments)
+                    {
+                        <li>
+                            <h3>@com.username</h3>
+                            <div style="border:thin;color:#1d1c1c">
+                                <p>  @com.comment1</p>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                    @if (Session["aid"] != null || Session["uid"] != null)
+                    {
+                        <form method="post" action="@("/Home/addingcommentvideo/?name="+ViewBag.videoname)">
+                            <input type="text" class="form-control " style="height:80px" name="comnt" id="comnt" />
+                            <input type="submit" class="form-control" style="width:100px" value="comment" />
+                        </form>
+                    }
+                </div>
+        </div>
+        </div>
+    </body>
+</html>

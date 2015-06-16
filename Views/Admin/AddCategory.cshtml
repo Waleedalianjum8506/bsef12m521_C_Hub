@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "addAdmin";
+}
+@{
+    ViewBag.Title = "Register";
+}
+@model cartoon.Models.Table
+<style>
+    #sheet {
+        margin-top: 1%;
+        margin-bottom: 3%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<div id="sheet" class="form-group" style="padding-left:30%;">
+    <h2>Add new Admin</h2>
+    <div class="container overlay">
+        <div class="row">
+            <form class="form-horizontal" method="post" action="/Admin/addingcategory">
+                <ul>
+                    <li>
+                        @Html.LabelFor(x => x.name)
+                        @Html.TextBoxFor(x => x.name, new { @class = " form-control", id = "name", name = "name" })
+                    </li>
+                    
+                </ul>
+                <div class="form-group" style="padding-left:18%">
+                    <br /><br /><button type="submit" class="btn btn-default">Submit</button><br /><br /><br />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
