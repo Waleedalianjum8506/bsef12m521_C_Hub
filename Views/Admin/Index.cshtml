@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cartton Hub";
 }
 <html>
 <head>
@@ -38,26 +38,33 @@
        
             <div class="col-md-4">
                 <div class="list-group">
+                    @if(Session["name"]=="waleed")
+                    { 
                    <h2 href="#" style="font-size:20px;" class="list-group-item active"><img src="~/Content/wal.png" class="img-circle"/>Waleed Ali</h2>
-                    <a href="/Admin/addAdmin" class="list-group-item">Add Admin</a>
-                    <a href="/Admin/AddCategory" class="list-group-item">Add Category</a>
-                     <a href="/Admin/viewUser" class="list-group-item">View Users</a>
-                    <a href="/Admin/viewCategories" class="list-group-item">View/Edit Categories</a>
-                    <a href="/Admin/viewContents" class="list-group-item">View/Edit Contents</a>
-                    <a href="/Admin/viewChannels" class="list-group-item">View/Delete Channels</a>
-                    <a href="/Admin/addchannel" class="list-group-item">Add Channel</a>
-                    <a href="/Admin/channel" class="list-group-item">See Channel</a>
-                    <a href="/Admin/seeallchannel" class="list-group-item">See All Channel</a>
-                    
-                    <a href="/Admin/uploadPicture" class="list-group-item">Upload Picture</a>
+                    }
+                    else
+                    {
+                        <h2 href="#" style="font-size:20px;" class="list-group-item active">@Session["name"]</h2>
+                            }
+                            <a href="/Admin/addAdmin" class="list-group-item">Add Admin</a>
+                            <a href="/Admin/AddCategory" class="list-group-item">Add Category</a>
+                            <a href="/Admin/viewUser" class="list-group-item">View Users</a>
+                            <a href="/Admin/viewCategories" class="list-group-item">View/Edit Categories</a>
+                            <a href="/Admin/viewContents" class="list-group-item">View/Edit Contents</a>
+                            <a href="/Admin/viewChannels" class="list-group-item">View/Delete Channels</a>
+                            <a href="/Admin/addchannel" class="list-group-item">Add Channel</a>
+                            <a href="/Admin/channel" class="list-group-item">See Channel</a>
+                            <a href="/Admin/seeallchannel" class="list-group-item">See All Channel</a>
 
-                    <a href="/Admin/uploadVideo" class="list-group-item">Upload Video</a>
-                   
+                            <a href="/Admin/uploadPicture" class="list-group-item">Upload Picture</a>
 
-                    <a href="/Admin/changePassword" class="list-group-item">change password</a>
-                    
+                            <a href="/Admin/uploadVideo" class="list-group-item">Upload Video</a>
 
-                </div>
+
+                            <a href="/Admin/changePassword" class="list-group-item">change password</a>
+
+
+</div>
 
             </div>
 </div>
